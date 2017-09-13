@@ -38,14 +38,38 @@ end
 # Return a hash of students and their average score.
 # TIP: To convert an array like [[:indiana, 90], [:nevada, 80]] to a hash,
 # use .to_h. Also look at Hash#transform_values.
-# def averages(grade_hash)
-#     new_hash={}
-#     names = grade_hash.keys
-#     puts names
-#     names_and_grades =  grade_hash.inspect
-#     puts names_and_grades
-#     puts grade_hash
-# end
+def averages(grade_hash)
+  new_hash = {}
+  # print grade_hash
+  just_grades = grade_hash.values.to_a
+  print just_grades.class
+  averages = just_grades.map {|array| array.reduce(:+) / array.size }
+  print averages
+  # print grade_hash.key
+  names = grade_hash.keys
+  print names
+  print names.class
+  new_array = names.zip(averages)
+  # grades = grade_hash.values.to_a
+  print new_array.flatten
+  puts "                     "
+  new_hash = Hash[*new_array.flatten]
+  print new_hash
+  # end
+  #   print new_hash
+  #   print new_hash.class
+
+#   new_hash={}
+#   grade_hash.map do |name, grades|
+#     score = 0
+#     grades.each do |grade|
+#       score = score + grade
+#     end
+#     avg = score/grades.length
+#     new_hash[name] = avg
+#   end
+# return new_hash
+end
 
 
 
@@ -107,18 +131,12 @@ def letter_grade(score)
   end
 end
 
-# def getLetterGrade(score):
-#     score = round(score)
-#     grades = [(90, 'A'), (80, 'B'), (70, 'C'), (60, 'D'), (0, 'F')]
-#     for i in range(len(grades)):
-#         if score >= grades[i][0]:
-#             return grades[i][1]
-#
-# https://www.codecademy.com/en/forum_questions/500d1427dfc0910002010e74
+# See alt answer here: https://www.codecademy.com/en/forum_questions/500d1427dfc0910002010e74
 
 # Return a hash of students and their final letter grade, as determined
 # by their average.
 def final_letter_grades(grade_hash)
+  #
 end
 
 # Return the average for the entire class.

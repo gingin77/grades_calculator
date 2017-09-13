@@ -31,10 +31,10 @@ class ClassroomTest < Minitest::Test
     assert_equal 75, assignment_average_score(DATA, 8)
   end
 
-  # def test_averages
-  #   assert_equal 91, averages(DATA)[:remy]
-  #   assert_equal 70, averages(DATA)[:dorian]
-  # end
+  def test_averages
+    assert_equal 91, averages(DATA)[:remy]
+    assert_equal 70, averages(DATA)[:dorian]
+  end
 
   def test_letter_grade
     assert_equal "A", letter_grade(1000)
