@@ -42,23 +42,25 @@ def averages(grade_hash)
   new_hash = {}
   # print grade_hash
   just_grades = grade_hash.values.to_a
-  print just_grades.class
+  puts "                     "
   averages = just_grades.map {|array| array.reduce(:+) / array.size }
   print averages
+  puts "                     "
   # print grade_hash.key
   names = grade_hash.keys
   print names
-  print names.class
+  puts "                     "
   new_array = names.zip(averages)
   # grades = grade_hash.values.to_a
-  print new_array.flatten
+  print new_array.to_h
   puts "                     "
-  new_hash = Hash[*new_array.flatten]
-  print new_hash
-  # end
-  #   print new_hash
-  #   print new_hash.class
+  new_hash = new_array.to_h
+  new_hash
+  puts "                     "
+end
 
+# Nancy's answer:
+# def averages(grade_hash)
 #   new_hash={}
 #   grade_hash.map do |name, grades|
 #     score = 0
@@ -68,10 +70,11 @@ def averages(grade_hash)
 #     avg = score/grades.length
 #     new_hash[name] = avg
 #   end
+#   print new_hash
 # return new_hash
-end
+# end
 
-
+# https://stackoverflow.com/questions/4028329/array-to-hash-ruby
 
 
 # def average
