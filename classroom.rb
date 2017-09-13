@@ -20,8 +20,8 @@ end
 # them as 1-10.
 def assignment_average_score(grade_hash, assignment_num)
   just_grades = grade_hash.values.to_a
-    select_assignments = just_grades.map {|grade| grade[assignment_num-1] }
-    print select_assignments.class
+    select_assignments = just_grades.map do |grade| grade[assignment_num-1]
+    end
       sum = select_assignments.inject(:+)
         average = sum/select_assignments.length
           average
@@ -87,8 +87,34 @@ end
 # 70-79 => C
 # 60-69 => D
 # < 60 => F
+
+    #From test: assert_equal "A", letter_grade(1000)
+
 def letter_grade(score)
+  if score >= 90
+    "A"
+  elsif score < 90
+    case score
+    when 0...59.999
+      "F"
+    when 60...69.999
+      "D"
+    when 70...79.999
+      "C"
+    when 80...89.999
+      "B"
+    end
+  end
 end
+
+# def getLetterGrade(score):
+#     score = round(score)
+#     grades = [(90, 'A'), (80, 'B'), (70, 'C'), (60, 'D'), (0, 'F')]
+#     for i in range(len(grades)):
+#         if score >= grades[i][0]:
+#             return grades[i][1]
+#
+# https://www.codecademy.com/en/forum_questions/500d1427dfc0910002010e74
 
 # Return a hash of students and their final letter grade, as determined
 # by their average.
