@@ -1,3 +1,4 @@
+require 'pry'
 # Given a grade_hash, student name, and assignment number, return the score
 # for that student and assignment. Note that Ruby counts arrays from 0, but
 # we are referring to them as 1-10.
@@ -20,11 +21,10 @@ end
 # them as 1-10.
 def assignment_average_score(grade_hash, assignment_num)
   just_grades = grade_hash.values.to_a
-    select_assignments = just_grades.map do |grade| grade[assignment_num-1]
-    end
-      sum = select_assignments.inject(:+)
-        average = sum/select_assignments.length
-          average
+  select_assignments = just_grades.map {|grade| grade[assignment_num-1] }
+  sum = select_assignments.inject(:+)
+  average = sum/select_assignments.length
+  average
 end
   # just_grades.map do |grade|
   #   new_arr.push(grade[assignment_num-1])
@@ -33,32 +33,36 @@ end
   #     print average
   # end
 # https://stackoverflow.com/questions/1538789/how-to-sum-array-of-numbers-in-ruby
+# .sum - method that can be called on an array
 
 
 # Return a hash of students and their average score.
 # TIP: To convert an array like [[:indiana, 90], [:nevada, 80]] to a hash,
 # use .to_h. Also look at Hash#transform_values.
 def averages(grade_hash)
+  # puts grade_hash.class
+  # print grade_hash
   new_hash = {}
   # print grade_hash
   just_grades = grade_hash.values.to_a
-  puts "                     "
+  # puts "                     "
   averages = just_grades.map {|array| array.reduce(:+) / array.size }
-  print averages
-  puts "                     "
+  # print averages
+  # puts "                     "
   # print grade_hash.key
   names = grade_hash.keys
-  print names
-  puts "                     "
+  # print names
+  # puts "                     "
   new_array = names.zip(averages)
   # grades = grade_hash.values.to_a
   print new_array.to_h
-  puts "                     "
+  # puts "                     "
   new_hash = new_array.to_h
   print new_hash.class
   new_hash
-  puts "                     "
+  # puts "                     "
 end
+
 
 # Nancy's answer:
 # def averages(grade_hash)
