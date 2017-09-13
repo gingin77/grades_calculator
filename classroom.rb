@@ -55,6 +55,7 @@ def averages(grade_hash)
   print new_array.to_h
   puts "                     "
   new_hash = new_array.to_h
+  print new_hash.class
   new_hash
   puts "                     "
 end
@@ -74,39 +75,20 @@ end
 # return new_hash
 # end
 
-# https://stackoverflow.com/questions/4028329/array-to-hash-ruby
+# ref: https://stackoverflow.com/questions/4028329/array-to-hash-ruby
+  # Just use Hash.[] with the values in the array. For example:
+  # arr = [1,2,3,4]
+  # Hash[*arr] #=> gives {1 => 2, 3 => 4}
 
-
-# def average
-#     grade_array.inject(0.0) do |sum, el|
-#      sum + el
-#    end
-#    def mean
-#      sum/size
-#    end
-#  end
-#  new_hash
-
-# def averages(grade_hash)
-#   new_hash={}
-#   grade_hash.map do |name, grades|
-#     score = 0
-#     grades.each do |grade|
-#       score = score + grade
-#     end
-#     avg = score/grades.length
-#     new_hash[name] = avg
-#   end
-# return new_hash
-# end
-
-# { name: "Sushi", price: 10 }.each do |key, value|
-#   puts "the key is #{key}, the value is #{value}"
-# end
-
-# arr = [5, 6, 7, 8]
-# arr.inject(0.0) { |sum, el| sum + el } / arr.size
-# => 6.5
+#   https://stackoverflow.com/questions/17492018/average-of-several-ruby-arrays
+#   a = [1, 2, 3, 4]
+#   b = [2, 3, 4, 5]
+#   c = [3, 4, 5, 6]
+#
+# a.zip(b,c)
+#    # [[1, 2, 3], [2, 3, 4], [3, 4, 5], [4, 5, 6]]
+# .map {|array| array.reduce(:+) / array.size }
+#    # => [ 2,3,4,5]
 
 # Return a letter grade for a numerical score.
 # 90+ => A
@@ -149,3 +131,5 @@ end
 # Return an array of the top `number_of_students` students.
 def top_students(grade_hash, number_of_students)
 end
+
+# cheat sheet for array operations: /Users/ginniehench/Desktop/Ruby/classroom_calculator/starter_files/classroom.rb
