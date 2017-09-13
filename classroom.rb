@@ -10,17 +10,30 @@ end
 # assignment. Note that Ruby counts arrays from 0, but we are referring to
 # them as 1-10.
 def assignment_scores(grade_hash, assignment_num)
-  array_of_grade_arrays = grade_hash.values.to_a
-  # print array_of_grade_arrays
-  index_seclect_array = array_of_grade_arrays.map {|grade| grade[assignment_num-1] }
-  index_seclect_array
+  just_grades = grade_hash.values.to_a
+  select_assignments = just_grades.map {|grade| grade[assignment_num-1] }
+  select_assignments
 end
 
 # Given a grade_hash and assignment number, return the average score for that
 # assignment. Note that Ruby counts arrays from 0, but we are referring to
 # them as 1-10.
 def assignment_average_score(grade_hash, assignment_num)
+  just_grades = grade_hash.values.to_a
+    select_assignments = just_grades.map {|grade| grade[assignment_num-1] }
+    print select_assignments.class
+      sum = select_assignments.inject(:+)
+        average = sum/select_assignments.length
+          average
 end
+  # just_grades.map do |grade|
+  #   new_arr.push(grade[assignment_num-1])
+  #   average = select_assignments.reduce do |accumulator, x|
+  #     (accumulator += x)/select_assignments.length
+  #     print average
+  # end
+# https://stackoverflow.com/questions/1538789/how-to-sum-array-of-numbers-in-ruby
+
 
 # Return a hash of students and their average score.
 # TIP: To convert an array like [[:indiana, 90], [:nevada, 80]] to a hash,
