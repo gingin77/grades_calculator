@@ -53,7 +53,6 @@ class ClassroomTest < Minitest::Test
   end
 
   def test_class_average
-    skip
     assert_equal 74, class_average(DATA)
   end
 

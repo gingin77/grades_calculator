@@ -126,6 +126,8 @@ end
 
 # Return the average for the entire class.
 def class_average(grade_hash)
+  total = grade_hash.values.flatten
+  total.sum/total.length
 end
 
 # Return an array of the top `number_of_students` students.
