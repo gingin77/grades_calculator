@@ -132,6 +132,10 @@ end
 
 # Return an array of the top `number_of_students` students.
 def top_students(grade_hash, number_of_students)
+  num_avg_hash = grade_hash.transform_values{|n| n.reduce(0,:+)/n.length}.sort_by {|el| el[1] }.reverse
+  num_avg_hash.take(number_of_students).collect{|students| students[0] }
+  # p num_avg_hash
+  # binding.pry
 end
 
 # cheat sheet for array operations: /Users/ginniehench/Desktop/Ruby/classroom_calculator/starter_files/classroom.rb

@@ -57,7 +57,6 @@ class ClassroomTest < Minitest::Test
   end
 
   def test_top_students
-    skip
     assert_equal [:remy, :kelly, :indiana], top_students(DATA, 3)
     assert_equal [:remy, :kelly, :indiana, :ryan, :riley, :allison, :nevada, :dorian, :drew, :chase], top_students(DATA, 10)
   end
