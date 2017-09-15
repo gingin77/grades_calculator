@@ -30,19 +30,10 @@ def assignment_average_score(grade_hash, assignment_num)
   average
 end
 
-  # just_grades.map do |grade|
-  #   new_arr.push(grade[assignment_num-1])
-  #   average = select_assignments.reduce do |accumulator, x|
-  #     (accumulator += x)/select_assignments.length
-  #     print average
-  # end
-# https://stackoverflow.com/questions/1538789/how-to-sum-array-of-numbers-in-ruby
-# .sum - method that can be called on an array
-
-
 # Return a hash of students and their average score.
 # TIP: To convert an array like [[:indiana, 90], [:nevada, 80]] to a hash,
 # use .to_h. Also look at Hash#transform_values.
+
 def averages(grade_hash)
   new_hash = {}
   namesArray = grade_hash.keys
@@ -54,35 +45,12 @@ def averages(grade_hash)
   new_hash
 end
 
-# Jocelyn's answer:
-# def averages(grade_hash)
-#   grade_hash.transform_values{|v| v.reduce(0,:+)/(v.length)}
-# end
-
-# ref: https://stackoverflow.com/questions/4028329/array-to-hash-ruby
-  # Just use Hash.[] with the values in the array. For example:
-  # arr = [1,2,3,4]
-  # Hash[*arr] #=> gives {1 => 2, 3 => 4}
-
-#   https://stackoverflow.com/questions/17492018/average-of-several-ruby-arrays
-#   a = [1, 2, 3, 4]
-#   b = [2, 3, 4, 5]
-#   c = [3, 4, 5, 6]
-#
-# a.zip(b,c)
-#    # [[1, 2, 3], [2, 3, 4], [3, 4, 5], [4, 5, 6]]
-# .map {|array| array.reduce(:+) / array.size }
-#    # => [ 2,3,4,5]
-
 # Return a letter grade for a numerical score.
 # 90+ => A
 # 80-89 => B
 # 70-79 => C
 # 60-69 => D
 # < 60 => F
-
-    #From test: assert_equal "A", letter_grade(1000)
-
 def letter_grade(score)
   if score >= 90
     "A"
@@ -99,8 +67,6 @@ def letter_grade(score)
     end
   end
 end
-
-# See alt answer here: https://www.codecademy.com/en/forum_questions/500d1427dfc0910002010e74
 
 # Return a hash of students and their final letter grade, as determined
 # by their average.
@@ -124,18 +90,14 @@ def final_letter_grades(grade_hash)
   end
 end
 
-# Return the average for the entire class.
+
 def class_average(grade_hash)
   total = grade_hash.values.flatten
   total.sum/total.length
 end
 
-# Return an array of the top `number_of_students` students.
 def top_students(grade_hash, number_of_students)
-  num_avg_hash = grade_hash.transform_values{|n| n.reduce(0,:+)/n.length}.sort_by {|el| el[1] }.reverse
+  num_avg_hash = grade_hash.transform_values{|n| n.sum/n.length}
+  num_avg_hash = num_avg_hash.sort_by {|rank| rank[1] }.reverse
   num_avg_hash.take(number_of_students).collect{|students| students[0] }
-  # p num_avg_hash
-  # binding.pry
 end
-
-# cheat sheet for array operations: /Users/ginniehench/Desktop/Ruby/classroom_calculator/starter_files/classroom.rb
