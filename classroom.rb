@@ -52,7 +52,6 @@ def averages(grade_hash)
   end
   new_hash = namesArray.zip(averagesArr).to_h
   new_hash
-  # binding.pry
 end
 
 # Jocelyn's answer:
@@ -106,7 +105,23 @@ end
 # Return a hash of students and their final letter grade, as determined
 # by their average.
 def final_letter_grades(grade_hash)
-  #
+  num_avg_hash = grade_hash.transform_values{|n| n.reduce(0,:+)/n.length}
+  letter_hash = num_avg_hash.transform_values do|l|
+    if l >= 90
+      "A"
+    elsif l < 90
+      case l
+      when 0...59.999
+        "F"
+      when 60...69.999
+        "D"
+      when 70...79.999
+        "C"
+      when 80...89.999
+        "B"
+      end
+    end
+  end
 end
 
 # Return the average for the entire class.
